@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" th:replace="Admin/base::Layout(~{::section})">>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<section>
+   <div class="card mt-3">
+
+			<div class="card-body">
+
+				<h1 class="text-center text-primary">Holiday-Package Booking Details</h1>
+
+
+
+
+
+
+
+				<div class="table-responsive">
+
+					<table class="table table-hover">
+
+						<thead>
+
+							<tr>
+
+								<th scope="col">Order_ID</th>
+
+								<th scope="col">Booking Date</th>
+
+								<th scope="col">Customer Name</th>
+
+								<th scope="col">Customer Phone No</th>
+
+								<th scope="col">Customer Email</th>
+
+
+
+								<th scope="col">Holiday-Package Name</th>
+
+								<th scope="col">No.of Days</th>
+
+								<th scope="col">No.of Activities</th>
+
+								<th scope="col">No.Of Family Person </th>
+
+								<th scope="col">Booking Price</th>
+
+								<th scope="col">Payment Status</th>
+
+
+
+							</tr>
+
+						</thead>
+
+						<tbody>
+
+							<tr th:each="f : ${package}">
+
+
+
+						
+								<td th:text="${f.orderId}"></td>
+								<td th:text="${f.date}"></td>
+								<td th:text="${f.user.name}"></td>
+								<td th:text="${f.user.mobileno}"></td>
+								<td th:text="${f.user.email}"></td>
+
+								<td th:text="${f.HolidayPackage.package_name}"></td>
+
+
+
+
+
+
+
+								<td th:text="${f.HolidayPackage.day}">@mdo</td>
+
+								<td th:text="${f.HolidayPackage.no_of_activty}">@mdo</td>
+
+								<td th:text="${f.no_of_person}">@mdo</td>
+
+								<td th:text="${f.booking_price}">@mdo</td>
+
+								<td class="  text-primary fs-5 fw-bold" th:text="${f.status}">@mdo</td>
+
+								
+
+							</tr>
+
+
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+   
+   
+       <script>
+     $(document).ready(()=>{
+    	$(".item").removeClass("active");
+    	$("#package2").addClass("active");
+     });
+     
+    </script>
+</section>
+	
+</body>
+</html>

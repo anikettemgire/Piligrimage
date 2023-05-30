@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="Admin/base::Layout(~{::section})">
+<head>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+    <!-- Service Setcion -->
+    <section>
+<div id="service" class="conatiner-xxl py-5 ">
+<div class="container">
+<div class="text-center">
+  <h1 class="mb-5">Dashboard</h1>
+  <div th:if="${session.msg}" th:classappend="${session.msg.type}"
+						class="alert alert-dismissible fade show" role="alert">
+						<p class="text-center" th:text="${session.msg.content}"></p>
+						<th:block th:text="${#session.removeAttribute('msg')}">
+							</th>
+					</div>
+</div>
+	
+<div class="row g-4">
+
+	<div class="col-lg-3 col-sm-6">
+		<div class="service-item rounded pt-3">
+			<div class="p-4 text-center">
+			<i class="fa fa-3x fa-user fa-spin-pulse text-primary mb-4"></i>
+			<h5>User</h5>
+          <h5 th:text="${totaluser}"></h5>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="service-item rounded pt-3">
+			<div class="p-4 text-center">
+				<i class="fa fa-3x fa-hotel fa-bounce text-primary mb-4 "></i>
+				
+				<h5 th:text="${'Hotel - ' + totalhotel}">Bus</h5>
+				
+				 	 <h5 th:text="${'Total BookHotel ' +bookhotel}"></h5>
+			</div>
+		</div>
+	</div>
+		<div class="col-lg-3 col-sm-6">
+		<div class="service-item rounded pt-3">
+			<div class="p-4 text-center">
+				<i class="fa fa-3x fa-briefcase fa-beat text-primary mb-4 "></i>
+			
+				<h5 th:text="${'Packages - ' + totalpackage}">Bus</h5>
+				
+				 	 <h5 th:text="${'Total BookPackage ' +bookpackage}"></h5>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="service-item rounded pt-3">
+			<div class="p-4 text-center">
+		
+				<i class="fa fa-3x fa-regular fa-message fa-shake text-primary mb-4 "></i>
+				<h5>Enquiries</h5>
+				<p>aso adsiona; oicjdc;oasicja0dc asjca09scj s caospcaopscm?</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="service-item rounded pt-3">
+			<div class="p-4 text-center">
+		
+				<i class="fa fa-3x fa-plane-departure fa-flip text-primary mb-4 "></i>
+				
+				<h5 th:text="${'Flight - ' + totalflight}">Bus</h5>
+				
+				 	 <h5 th:text="${'Total BookFlight ' +bookfligth}"></h5>
+				
+			</div>
+		</div>
+	</div>
+		<div class="col-lg-3 col-sm-6">
+		<div class="service-item rounded pt-3">
+			<div class="p-4 text-center">
+			
+				<i class="fa fa-3x fa-train-subway fa-beat-fade text-primary mb-4 "></i>
+				
+				<h5 th:text="${'Trains - ' + totaltrain}">Bus</h5>
+				
+				 	 <h5 th:text="${'Total BookTrain ' +booktrain}"></h5>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3 col-sm-6">
+		<div class="service-item rounded pt-3">
+			<div class="p-4 text-center">
+		
+				<i class="fa fa-3x fa-bus fa-beat-fade text-primary mb-4 "></i>
+				<h5 th:text="${'Bus - ' + totalbus}">Bus</h5>
+				
+				 	 <h5 th:text="${'Total BookBus ' +bookbus}"></h5>
+				
+			</div>
+		</div>
+	</div>
+
+	
+	
+	
+ </div>
+</div>
+</div>
+      
+
+
+       <script>
+     $(document).ready(()=>{
+    	$(".item").removeClass("active");
+    	$("#home1").addClass("active");
+     });
+     
+    </script>
+    
+
+
+
+     
+    </section>
+	
+</body>
+</html>

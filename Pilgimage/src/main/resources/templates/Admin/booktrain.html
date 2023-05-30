@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" th:replace="Admin/base::Layout(~{::section})">>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<section>
+  
+
+   
+      
+		<div class="card ms-3 me-3">
+			<!-- Msg -->
+			
+			<div class="card-body">
+				<h1 class="text-center text-primary">
+					<!-- TItlw -->
+				Booking	Train Detail
+				</h1>
+
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Order ID</th>
+								<th scope="col">Booking Date</th>
+								<th scope="col">Customer Name</th>
+								<th scope="col">Customer Phone No</th>
+								<th scope="col">Customer Email</th>
+									<th scope="col">Bus Name</th>
+										<th scope="col">Departure City</th>
+								<th scope="col">Destination City</th>
+								<th scope="col">No Of BookSeat</th>
+								<th scope="col">Booking Price</th>
+								<th scope="col">Paymet Status</th>
+
+
+							
+
+							</tr>
+						</thead>
+				 		<tbody>
+							<tr th:each="b:${trainbook}">
+								<td th:text="${b.orderId}"></td>
+								<td th:text="${b.date}"></td>
+								<td th:text="${b.user.name}"></td>
+								<td th:text="${b.user.mobileno}"></td>
+								<td th:text="${b.user.email}"></td>
+								<td th:text="${b.TrainAd.company}"></td>
+								<td th:text="${b.TrainAd.departure_city}"></td>
+									<td th:text="${b.TrainAd.destination_city}"></td>
+
+							
+								<td th:text="${b.no_of_seats}"></td>
+								<td th:text="${b.booking_price}"></td>
+								<td class="text-primary fs-5 fw-bold" th:text="${b.status}"></td>
+								
+							
+
+							</tr>
+
+
+						</tbody> 
+					</table>
+				</div>
+
+			</div>
+
+		</div>
+   
+   
+   
+       <script>
+     $(document).ready(()=>{
+    	$(".item").removeClass("active");
+    	$("#train2").addClass("active");
+     });
+     
+    </script>
+</section>
+	
+</body>
+</html>

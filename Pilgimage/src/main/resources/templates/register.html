@@ -1,0 +1,210 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body class="bg-white">
+	<section style="padding-top: 10%;">
+		<div class=" ">
+			<div class="container">
+				<div class="row d-flex justify-content-center align-items-center ">
+					<div class="col-lg-8 ">
+						<div class="card text-black shadow" style="border-radius: 25px;">
+							<div class="card-body ">
+								<div class="row justify-content-center">
+									<div class="col-md-8 col-lg-4 col-xl-5 order-2 order-lg-1">
+										<p class="text-center h1 fw-bold mb-4 mt-2"
+											style="margin-left: 30%;">Sign up</p>
+								
+										
+										
+
+										<form class="mx-1 mx-md-1" th:action="@{/signup}"
+											method="post" th:object="${user}">
+
+											<div class="d-flex flex-row align-items-center mb-2">
+
+												<i class="fas fa-user fa-lg me-3 fa-fw"></i>
+
+												<div class="form-outline flex-fill mb-0">
+
+													<input type="text" id="form3Example1c" required
+														name="name" th:value="${user.name}"class="form-control"
+														th:classappend="${#fields.hasErrors('name')? 'is-invalid':''}" />
+													<label class="form-label" for="form3Example1c">Your
+
+														Name</label>
+													<div class="invalid-feedback"
+														th:each="e:${#fields.errors('name')}" th:text="${e}">
+
+													</div>
+												</div>
+
+											</div>
+
+
+											<div class="d-flex flex-row align-items-center mb-2">
+
+												<i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+
+												<div class="form-outline flex-fill mb-0">
+
+													<input type="email" name="email" th:value="${user.email}"id="form3Example3c"
+														class="form-control"
+														th:classappend="${#fields.hasErrors('email')?'is-invalid':''}"
+														required /> <label class="form-label"
+														for="form3Example3c">Your Email</label>
+													<div class="invalid-feedback"
+														th:each="e:${#fields.errors('email')}" th:text="e">
+
+													</div>
+
+
+
+												</div>
+
+											</div>
+
+											<div class="d-flex flex-row align-items-center mb-2">
+
+												<i class="fas fa-phone fa-lg me-3 fa-fw"></i>
+
+												<div class="form-outline flex-fill mb-0">
+
+													<input type="number" name="mobileno" th:value="${user.mobileno}" id="form3Example33c"
+														class="form-control" /> <label class="form-label"
+														for="form3Example33c">Your Mobile No</label>
+
+
+												</div>
+												<div class="invalid-feedback">pleas enter</div>
+
+											</div>
+
+											<div class="d-flex flex-row align-items-center mb-2">
+
+												<i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+
+												<div class="form-outline flex-fill mb-0">
+
+													<input type="password" name="password"
+														id="form3Example4c" class="form-control"
+														
+														required /> <label class="form-label"
+														for="form3Example4c">Password</label>
+													
+
+												</div>
+
+
+											</div>
+
+											<div class="d-flex flex-row align-items-center mb-2">
+
+												<i class="fas fa-key fa-lg me-3 fa-fw"></i>
+
+												<div class="form-outline flex-fill mb-0">
+
+													<input type="password" name="cpassword"
+														id="form3Example4cd" class="form-control" required /> <label
+														class="form-label" for="form3Example4cd">Repeat
+														your password</label>
+
+
+
+
+												</div>
+
+											</div>
+
+											<div class="form-check d-flex justify-content-center mb-5">
+
+												<input class="form-check-input me-2" type="checkbox"
+													id="form2Example3c" name="agreement" /> <label
+													class="form-check-label" for="form2Example3"> I
+
+													agree all statements in <a href="#!">Terms of service</a>
+
+												</label>
+
+											</div>
+
+											<div
+												class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+
+												<button type="submit" class="btn btn-primary btn-lg">Register</button>
+
+											</div>
+
+										</form>
+
+									</div>
+
+									<div
+										class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+										<img th:src="@{/image/tt.jpg}" class="img-fluid "
+											alt="Sample image">
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		
+			<section style="margin-top: 150px;">
+		<script th:inline="javascript">
+	
+
+	toastr.options = {
+			
+			
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": false,
+	  "progressBar": true,
+	  "positionClass": "toast-top-center",
+	  "preventDuplicates": true,
+	  "onclick": null,
+	  "showDuration": "300",
+	  "hideDuration": "1000",
+	  "timeOut": "5000",
+	  "extendedTimeOut": "1000",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+	var str=[[${session.msg}]];
+	console.log(str);
+	if(str!=null){
+		 
+		if(str.includes("Succesfull Registration")){
+			toastr.success(str,'Register',{timeout:2000});
+			var str=[[${#session.removeAttribute('msg')}]];
+		}
+		else{
+			toastr.error(str,'Register',{timeout:2000});
+		
+			var str=[[${#session.removeAttribute('msg')}]];
+		}
+	}
+	
+	</script>
+
+	</section>
+
+</body>
+
+</html>
+

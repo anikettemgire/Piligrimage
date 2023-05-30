@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="user/base::Layout(~{::section})">
+
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section style="margin-top: 150px;">
+		<script th:inline="javascript">
+	
+
+	toastr.options = {
+			
+			
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": false,
+	  "progressBar": true,
+	  "positionClass": "toast-top-center",
+	  "preventDuplicates": true,
+	  "onclick": null,
+	  "showDuration": "300",
+	  "hideDuration": "1000",
+	  "timeOut": "5000",
+	  "extendedTimeOut": "1000",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+	var str=[[${session.msg}]];
+	console.log(str);
+	if(str!=null){
+		 
+		if(str.includes("Change Password Succesful")){
+			toastr.success(str,'Notification',{timeout:2000});
+			var str=[[${#session.removeAttribute('msg')}]];
+		}
+		else{
+			toastr.error(str,'Notification',{timeout:2000});
+		
+			var str=[[${#session.removeAttribute('msg')}]];
+		}
+	}
+	
+	</script>
+
+		<!-- Package Start -->
+		<div class="container rounded-circle">
+
+			<div class="search" style="height: 300px;">
+
+				<div class="container h-100">
+
+					<div class="d-flex justify-content-center h-100">
+
+						<div class="searchbar">
+
+							<input class="search_input" type="text" name=""
+								placeholder="Search..."> <a href="#"
+								class="search_icon"><i class="fas fa-search"></i></a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		<div class="container-xxl py-5 mt-5">
+			<div class="container">
+				<div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+					<h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
+					<h1 class="mb-5">Awesome Packages</h1>
+				</div>
+
+
+
+
+
+
+
+
+
+				<div class="row g-4 justify-content-center">
+
+					<div th:each="p:${package}"
+						class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+						<div class="package-item">
+							<div class="overflow-hidden">
+
+								<img class="img-fluid" th:src="@{'/image/' +${p.imageUrl}}"
+									alt="">
+
+							</div>
+							<div class="d-flex border-bottom">
+								<small class="flex-fill text-center border-end py-2"><i
+									class="fa fa-map-marker-alt text-primary me-2"></i><small
+									th:text="${p.package_name}"></small></small> <small
+									class="flex-fill text-center border-end py-2"><i
+									class="fa fa-calendar-alt text-primary me-2"></i><small
+									th:text="${p.day}"></small> days</small> <small
+									class="flex-fill text-center py-2"><i
+									class="fa fa-person-hiking text-primary me-2"></i><small
+									th:text="${p.no_of_activty}"></small> Activty</small>
+							</div>
+
+							<div class="text-center p-4">
+
+								<h3 class="mb-0" th:text="${'$' +p.price}"></h3>
+								<div class="mb-3">
+									<small class="fa fa-star text-primary"></small> <small
+										class="fa fa-star text-primary"></small> <small
+										class="fa fa-star text-primary"></small> <small
+										class="fa fa-star text-primary"></small> <small
+										class="fa fa-star text-primary"></small>
+								</div>
+								<p>Tempor erat elitr rebum at clita. Diam dolor diam ipsum
+									sit diam amet diam eos</p>
+								<div class="d-flex justify-content-center mb-2">
+									<button type="button"
+										class="btn btn-sm btn-primary px-3 border-end"
+										style="border-radius: 30px 0 0 30px;" data-bs-toggle="modal"
+										data-bs-target="#package"
+										th:attr="data-bs-target='#package'+${p.pid}">Read
+										More</button>
+
+									<button class="btn btn-sm btn-primary px-3" data-bs-toggle="offcanvas"
+									data-bs-target="#bus"
+									th:attr="data-bs-target='#off'+${p.pid}"
+									aria-controls="bus"
+										style="border-radius: 0 30px 30px 0;">Book Now</button>
+										
+										
+										
+										
+											<div class="offcanvas offcanvas-end" tabindex="-1"
+									th:id="off+${p.pid}" aria-labelledby="offcanvasRightLabel">
+									<div class="offcanvas-header">
+										<h3 id="offcanvasRightLabel"
+											class="text-center text-primary" th:text="${'Book ' + p.package_name + ' Pacakge'}">Book Holiday Pacakge</h3>
+										<button type="button" class="btn-close text-reset"
+											data-bs-dismiss="offcanvas" aria-label="Close"></button>
+									</div>
+									<div class="offcanvas-body">
+										<div >
+											<input type="hidden" id="pid" name="bus_id" th:value="${p.pid}" />
+											<input type="hidden" name="id" th:value="${user.id}" />
+										
+											
+											<div class="mb-3">
+												<label for="fn" class="form-label">Name</label> <input
+													type="text" class="form-control" id="fn" readonly
+													name="name" th:value="${user.name}">
+
+											</div>
+											<div class="mb-3">
+												<label for="exampleInputEmail1" class="form-label">
+													Mobile No</label> <input type="number" class="form-control"
+													id="exampleInputEmail1" readonly name="phone_no"
+													th:value="${user.mobileno}">
+
+											</div>
+											<div class="mb-3">
+												<label for="dc" class="form-label">Email Id </label> <input
+													type="email" class="form-control" id="d" readonly
+													name="email" th:value="${user.email}">
+
+											</div>
+												<div class="mb-3">
+												<label for="no" class="form-label">Address</label>
+												<textarea rows="5" class="form-control" required
+													name="adress" id="adr"></textarea>
+											</div>
+											
+										 	<div class="mb-3">
+												<label for="dc" class="form-label">Booking Date </label> <input
+													type="date" required class="form-control" id="dc" 
+													name="date">
+
+											</div>	
+		               	<!-- Calaulation of the table price -->
+				                              <div class="mb-3">
+												<label for="exampleInputEmail1" class="form-label">
+													Price Per Person:</label> <input type="number" readonly class="form-control"
+													id="num-two" th:value="${p.price}">
+													</div>
+			
+													<div class="mb-3">
+												   <label for="exampleInputEmail1" class="form-label">
+													How Many Person We want to:</label> <input type="number" name="no_of_seats" step="0.00000001" min="0.00000001"   required class="form-control"
+													id="num-one">
+													</div>
+													<div>
+								            <p id="add-sum" class="btn btn-outline-light text-primary fs-4">0</p>
+                                                   </div>
+  
+
+		
+  											</div>
+
+
+
+											<div class="text-center">
+												<button  onclick="PacakgepaymentStart()"  type="submit" class="btn btn-success">Book Now</button>
+										
+												 
+										 
+											</div>
+									
+										</div>
+										
+
+									</div>
+										
+										
+										
+								</div>
+
+								
+		<div class="modal fade" th:id="package+${p.pid}" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+			<div
+				class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+
+						<h5 class="modal-title" id="exampleModalLabel">ITINERARY</h5>
+
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+
+					</div>
+
+					<div class="modal-body">
+
+
+
+						<h3>Inclusion</h3>
+
+
+
+
+
+
+
+						<div class="row" th:each="h : ${p.hotelA}">
+
+							<p class="text-primary text-center">Hotel :</p>
+
+
+
+							<div class="hotels ">
+
+
+
+								<div class="col-md-10 offset-md-1 ">
+
+
+
+									<div class="card mb-4 border-1  shadow">
+
+
+
+										<div class="row g-0 align-items-center">
+
+
+
+											<div class="col-md-5 col-ld-9 hot">
+
+
+
+												<img th:src="@{'/image/'+${h.hotel_img_url}}"
+													class="img-fluid ">
+
+
+
+												<div class="d-flex border-bottom">
+
+
+
+													<small class="flex-fill text-center border-end py-2"><i
+														class="fa fa-map-marker-alt text-primary me-2"></i> <small
+														th:text="${h.hotel_location}"></small> </small> <small
+														class="flex-fill text-center border-end py-2"><i
+														class=" fa fa-tachograph-digital text-primary me-2"></i><small
+														th:text="${h.type}"></small></small> <small
+														class="flex-fill text-center py-2"><i
+														class="fa fa-user text-primary me-2"></i><small
+														th:text="${h.no_of_person + ' Person'}"></small></small>
+
+
+
+												</div>
+
+
+
+											</div>
+
+
+
+											<div class="col-md-5 px-lg-4 px-md-3 px-0">
+
+
+
+												<h5 class="mb-3 fs-4 text-danger "
+													th:text="${h.hotel_name}">Hotel Name</h5>
+
+
+
+												<div class="features mb-4">
+
+
+
+													<h6 class="mb-1">Features</h6>
+
+
+
+													<span
+														class="badge rounded-pill bg-light text-dark text-wrap"
+														th:text="${h.noofroom+ ' Room'}"> </span> <span
+														class="badge rounded-pill bg-light text-dark text-wrap">
+
+
+
+														1 Bathroom </span> <span
+														class="badge rounded-pill bg-light text-dark text-wrap">
+
+
+
+														1 Balcony </span>
+
+
+
+												</div>
+
+
+
+												<div class="Facilities mb-3">
+
+
+
+													<h6 class="mb-1">Facilities</h6>
+
+
+
+													<span
+														class="badge rounded-pill bg-light text-dark text-wrap">
+
+
+
+														Wifi </span> <span
+														class="badge rounded-pill bg-light text-dark text-wrap">
+
+
+
+														Television </span> <span
+														class="badge rounded-pill bg-light text-dark text-wrap">
+
+
+
+														Room Heater </span>
+
+
+
+												</div>
+
+
+
+												<div class="guests">
+
+													<div class="mt-2">
+
+
+
+														<small class="fa fa-star text-primary"></small> <small
+															class="fa fa-star text-primary"></small> <small
+															class="fa fa-star text-primary"></small> <small
+															class="fa fa-star text-primary"></small> <small
+															class="fa fa-star text-primary"></small>
+
+
+
+													</div>
+
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+
+
+
+
+
+
+						<div class="container mt-5 mb-5" th:each="f : ${p.flightA}">
+
+
+
+							<p class="text-primary text-center">Flight :</p>
+
+
+
+							<div class="d-flex justify-content-center row ">
+
+
+
+								<div class="col-md-12 shadow border">
+
+
+
+									<div class="row bg-white border rounded">
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${f.company}">Air India</h4>
+
+											<p class="fs-6" th:text="${f.flight_no}">#abs456</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${f.departure_time}">08:10</h4>
+
+
+
+											<p class="text-primary" th:text="${f.departure_city}">New
+
+												Delhi</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h5 th:text="${f.total_time}">02h:55m</h5>
+
+
+
+											<p>non-stop</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${f.destination_time}">10:45</h4>
+
+
+
+											<p class="text-primary" th:text="${f.destination_city}">Mumbai</p>
+
+
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+
+
+
+
+
+
+						<div class="container mt-5 mb-5" th:each="t : ${p.trainAd}">
+
+							<p class="text-primary text-center">Train :</p>
+
+
+
+							<div class="d-flex justify-content-center row">
+
+
+
+								<div class="col-md-12 shadow border">
+
+
+
+									<div class="row bg-white border rounded">
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${t.company}"></h4>
+
+											<p class="fs-6" th:text="${t.train_no}"></p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${t.departure_time}"></h4>
+
+
+
+											<p class="text-primary" th:text="${t.departure_city}">
+
+												</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h5 th:text="${t.total_time}">02h:55m</h5>
+
+
+
+											<p>non-stop</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${t.destination_time}">10:45</h4>
+
+
+
+											<p class="text-primary" th:text="${t.destination_city}">Mumbai</p>
+
+
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+
+
+
+
+
+
+						<div class="container mt-5 mb-5" th:each="b : ${p.busA}">
+
+							<p class="text-primary text-center">Bus :</p>
+
+
+
+							<div class="d-flex justify-content-center row">
+
+
+
+								<div class="col-md-12 shadow border">
+
+
+
+									<div class="row bg-white border rounded">
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${b.company}">Air India</h4>
+
+											<p class="fs-6" th:text="${b.bus_no}">#abs456</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${b.departure_time}">08:10</h4>
+
+
+
+											<p class="text-primary" th:text="${b.departure_city}">New
+
+												Delhi</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h5 th:text="${b.total_time}">02h:55m</h5>
+
+
+
+											<p>non-stop</p>
+
+
+
+										</div>
+
+
+
+										<div class="col-md-3 mt-4 text-center">
+
+
+
+											<h4 th:text="${b.destination_time}">10:45</h4>
+
+
+
+											<p class="text-primary" th:text="${b.destination_city}">Mumbai</p>
+
+
+
+										</div>
+
+									</div>
+
+
+
+								</div>
+
+
+
+							</div>
+
+						</div>
+
+
+
+
+
+
+
+						<div class="mt-2 ">
+
+							<h4 class="mb-1 text-primary text-center">Details :</h4>
+
+							<pre class="fs-5 text-center border border-primary"
+								th:text="${p. description}"></pre>
+
+						</div>
+
+
+
+
+
+					</div>
+
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+
+
+		<!-- Modal -->
+								
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+		<!-- Package End -->
+<script>
+var numOne = document.getElementById("num-one");
+var numTwo = document.getElementById("num-two");
+var addSum = document. getElementById("add-sum");
+
+numOne.addEventListener("input", add);
+numTwo.addEventListener("input", add);
+
+function add(){
+  var one = Number(numOne.value) || 0;
+  var two = Number(numTwo.value) || 0;
+  var sum = Number(one*two);
+  addSum.innerHTML =   sum;
+}
+
+</script>
+
+
+
+
+
+		<!-- Modal -->
+
+	</section>
+</body>
+</html>

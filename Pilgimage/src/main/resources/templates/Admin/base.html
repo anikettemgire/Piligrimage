@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:fragment="Layout(content)">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+
+
+
+<!-- Link Of Css File -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+<!-- Link JS File -->
+
+
+<script th:src="@{/js/script.js}">
+	
+</script>
+<!-- link of fontawesome -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+	integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- link of fontawesome -->
+
+<!-- Link booticon -->
+
+
+<link
+	href="
+https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.min.css
+"
+	rel="stylesheet">
+
+<!-- Link booticon -->
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+	rel="stylesheet">
+<!-- Google Web Fonts -->
+
+
+<!-- Jquery  -->
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript Libraries -->
+<!-- Libary Requeird Bootstarp -->
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous">
+	
+</script>
+
+
+<!-- By Delete Action By USing The Mysweet Function -->
+<script>
+function deletBus(bus_id){
+	swal({
+		  title: "Are you sure?",
+		  text: "We Want Do Delete This Bus!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    window.location="/admin/delete/"+bus_id;
+		  } else {
+		    swal("Your Saved!");
+		  }
+		});
+	
+}
+function  deletflight(Flight_id){
+	swal({
+		  title: "Are you sure?",
+		  text: "We Want Do Delete This Flight!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    window.location="/admin/deleteflight/"+Flight_id;
+		  } else {
+		    swal("Your Saved!");
+		  }
+		});
+	
+}
+
+function  deletTrain(train_id){
+	swal({
+		  title: "Are you sure?",
+		  text: "We Want Do Delete This Train!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    window.location="/admin/deletetrain/"+train_id;
+		  } else {
+		    swal("Your Saved!");
+		  }
+		});
+	
+}
+
+function  deletHotel(hotel_id){
+	swal({
+		  title: "Are you sure?",
+		  text: "We Want Do Delete This Hotel!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    window.location="/admin/deletehotel/"+hotel_id;
+		  } else {
+		    swal("Your Saved!");
+		  }
+		});
+	
+}
+
+function    deletpackge(package_id){
+	swal({
+		  title: "Are you sure?",
+		  text: "We Want Do Delete This package!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    window.location="/admin/deletepackage/"+package_id;
+		  } else {
+		    swal("Your Saved!");
+		  }
+		});
+	
+}
+
+    
+   
+    
+</script>
+
+<!-- Libary Requeird Bootstarp -->
+
+
+<!-- Title Of All -->
+
+<title th:text="${title}"></title>
+</head>
+
+<body>
+
+	<!-- navabar -->
+
+	<nav id="nav"
+		class="navbar navbar-expand-lg navbar-light px-7 px-lg-5 py-3 py-lg-0 mb-5">
+		<a href="" class="navbar-brand p-0">
+			<h1 class="text-primary m-0">
+				<i class="fa fa-map-marker-alt fa-bounce  me-3"></i>MyTrip
+			</h1>
+
+		</a>
+		<button class="navbar-toggler" type="button"
+			data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+			<span class="fa fa-bars"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<div class="navbar-nav mx-auto py-0">
+				<a data-bs-toggle="modal" data-bs-target="#package"
+					class="nav-item nav-link">Add Packages</a> <a
+					data-bs-toggle="modal" data-bs-target="#hotel"
+					class="nav-item nav-link">Add Hotels</a> <a
+					data-bs-toggle="modal" data-bs-target="#flight"
+					class="nav-item nav-link">Add Flight</a> <a
+					data-bs-toggle="modal" data-bs-target="#train"
+					class="nav-item nav-link">Add Train</a> <a data-bs-toggle="modal"
+					data-bs-target="#bus" class="nav-item nav-link">Add Bus</a>
+
+			</div>
+			<!-- Button Of login navbar -->
+
+			<div class="dropdown">
+				<a class="btn btn-warning rounded-pill py-2 px-4 dropdown-toggle"
+					href="#" role="button" id="dropdownMenuLink"
+					data-bs-toggle="dropdown" aria-expanded="false"> Update </a>
+
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+
+					<li><a id="package1" class="dropdown-item item"
+						th:href="@{/admin/viewPackage}"><i class="fa fa-briefcase"
+							aria-hidden="true"></i> Packages</a></li>
+
+					<li><a id="hotel1" class="dropdown-item item"
+						th:href="@{/admin/viewhotels}"><i class="fa fa-hotel"
+							aria-hidden="true"></i> Hotels</a></li>
+
+
+					<li><a id="flight1" class="dropdown-item item"
+						th:href="@{/admin/viewflight}"><i
+							class="fa  fa-plane-departure" aria-hidden="true"></i> Flight</a></li>
+
+					<li><a id="train1" class="dropdown-item item"
+						th:href="@{/admin/viewtrain}"><i
+							class="fa fa-train-subway " aria-hidden="true"></i> Train</a></li>
+					<li><a id="bus1" class="dropdown-item item"
+						th:href="@{/admin/viewbus}"><i class="fa fa-bus"
+							aria-hidden="true"></i> Bus</a></li>
+
+				</ul>
+			</div>
+			&emsp;
+
+			<!-- Button Of end navbar -->
+
+			<div class="dropdown">
+				<button class="dropbtn btn btn-success rounded-pill py-2 px-4"
+					th:text="${'Hi,'+ user.name}"></button>
+				<div class="dropdown-content">
+					<!--  <p>you are viewing your personal profile</p>-->
+
+
+					<a th:href="@{/logout}"><i
+						class="fa-solid fa-right-from-bracket"></i> &ensp;Logout</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+	<!-- Silde Bar -->
+	<div class="side" style="margin-top: -5;">
+		<!-- Id TYA STAHI USE KELA AHE KI TYLA APMN PRTEK PAGE LA ACTIVE KARNAR AHE ANI STYKE MADHE PROPER ACTICE CI -->
+		<span onclick="toggleSlidebar()" class="crossBtn"
+			style="margin-top: -2px;">&times</span> <a id="home1"
+			th:href="@{/admin/index}" class="item"><i class="fa fa-home"
+			aria-hidden="true"></i>&nbsp;Home</a> <a id="package2"
+			th:href="@{/admin/bookPackage}" class="item"><i
+			class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Booking
+			Packages</a> <a id="hotel2" th:href="@{/admin/bookhotels}" class="item"><i
+			class="fa fa-hotel" aria-hidden="true"></i>&nbsp;Booking Hotels</a> <a
+			id="flight2" th:href="@{/admin/bookflight}" class="item"><i
+			class="fa  fa-plane-departure" aria-hidden="true"></i>&nbsp;Booking
+			Flight</a> <a id="train2" th:href="@{/admin/booktrain}" class="item"><i
+			class="fa fa-train-subway " aria-hidden="true"></i>&nbsp;Booking
+			Train</a> <a id="bus2" th:href="@{/admin/bookbus}" class="item"><i
+			class="fa fa-bus" aria-hidden="true"></i>&nbsp;Booking Bus</a> <a
+			id="Enquiries" th:href="@{/admin/viewequriy}" class="item"><i
+			class="fa  fa-message" aria-hidden="true"></i>&nbsp;Enquiries</a> <a
+			id="logout" th:href="@{/logout}" class="item"> <i
+			class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Logout
+		</a>
+
+		<div class="divider"></div>
+	</div>
+
+
+	<!-- Slide Bar End -->
+
+	<!-- Replace Contetne with silde bar toggle -->
+	<div class="content" style="margin-top: 97px;">
+		<i onclick="toggleSlidebar()" class="fa fa-bars m-3"
+			aria-hidden="true"> </i>
+		<!-- Print The Msg -->
+
+		<div class="co" th:replace="${content}"></div>
+
+	</div>
+	<!-- Toggle bar and replace end -->
+
+	<!-- Modal Staart -->
+	<!-- Modal For Add Pacakge-->
+	<div class="modal fade" id="package" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-primary" id="package">Add
+						Pacakge</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/admin/addpackage}" method="post"
+						enctype="multipart/form-data">
+						<div class="mb-3">
+							<label for="na" class="form-label">Package Name</label> <input
+								type="text" class="form-control" id="na" required 
+								name="package_name">
+
+						</div>
+
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">No
+								Of Activity</label> <input type="number" class="form-control"
+								id="exampleInputEmail1" required name="no_of_activty">
+
+						</div>
+						<div class="mb-3">
+							<label for="no" class="form-label">No Of Days</label> <input
+								type="number" class="form-control" id="no" required name="day">
+
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Price Per Person</label> <input
+								type="text" class="form-control" id="pp"  required name="price">
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">Choose
+								Hotel</label> <select  name="hotelA" multiple class="form-control"
+								>
+
+								<option th:each="h:${hotel}" th:value="${h.hid}"
+									th:text="${h.hotel_name+'('+h.hotel_location+')'}"></option>
+
+							</select>
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">Choose
+								Bus</label> <select  name="busA" multiple  class="form-control" >
+
+
+
+								<option th:each="b:${bus}" th:value="${b.bus_id}"
+									th:text="${b.departure_city +' => '+b.destination_city}"></option>
+							</select>
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">Choose
+								Flight</label> <select   name="flightA" multiple class="form-control" >
+
+								<option th:each="f:${flight}" th:value="${f.filght_id}"
+									th:text="${f.departure_city +' =>  '+f.destination_city}"></option>
+							</select>
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">Choose
+								Train</label> <select  name="trainAd" multiple class="form-control" >
+
+								<option th:each="t:${train}" th:value="${t.train_id}"
+									th:text="${t.departure_city +' =>  '+t.destination_city}"></option>
+							</select>
+
+						</div>
+
+
+
+						<div class="mb-3">
+							<label for="no" class="form-label">Add Package Photo</label> <input
+								type="file" class="form-control" required name="image">
+						</div>
+						<div class="mb-3">
+							<textarea id="mytextarea" placeholder="Enter  Descrptiom"
+								name="description" class="form-control"
+								rows="10"></textarea>
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal For Add Hotel-->
+	<div class="modal fade" id="hotel" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="package">Add Hotel</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/admin/addhotel}" method="post"
+						enctype="multipart/form-data">
+						<div class="mb-3">
+							<label for="na" class="form-label">Hotel Name</label> <input
+								type="text" class="form-control" id="na" required
+								name="hotel_name">
+
+						</div>
+						<div class="mb-3">
+							<label for="ll" class="form-label">Location</label> <input
+								type="text" class="form-control" id="ll" required
+								name="hotel_location">
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">Person</label>
+							<input type="number" class="form-control"
+								id="exampleInputEmail1" required name="no_of_person">
+
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Price Per Person</label> <input
+								type="text" class="form-control" id="pp" required name="price">
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">Choose
+								Type</label> <select required name="type" class="form-control">
+
+								<option value="Ac">Ac</option>
+
+								<option value="Non-Ac">Non-Ac</option>
+							</select>
+
+						</div>
+						<div class="mb-3">
+							<label for="no" class="form-label">No Of Rooms</label> <input
+								type="number" class="form-control" id="no" required
+								name="noofroom">
+
+						</div>
+						<div class="mb-3">
+							<label for="no" class="form-label">Description</label>
+							<textarea rows="5" class="form-control" required
+								name="hotel_descrption"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="no" class="form-label">Add Photo</label> <input
+								type="file" class="form-control" required name="img">
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Modal For Add Flight-->
+	<div class="modal fade" id="flight" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="package">Add Flight</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/admin/addflight}" method="post">
+						<div class="mb-3">
+							<label for="fl" class="form-label">Flight Company Name</label>
+							<input type="text" class="form-control" id="fl" required
+								name="company">
+
+						</div>
+						<div class="mb-3">
+							<label for="fn" class="form-label">Flight No</label> <input
+								type="text" class="form-control" id="fn" required
+								name="flight_no">
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">
+								Departure City</label> <input type="text" class="form-control"
+								id="exampleInputEmail1" required name="departure_city">
+
+						</div>
+						<div class="mb-3">
+							<label for="dc" class="form-label">Destination City</label> <input
+								type="text" class="form-control" id="dc" required
+								name="destination_city">
+
+						</div>
+
+						<div class="mb-3">
+							<label for="pp" class="form-label">Departure Time</label> <input
+								type="time" class="form-control" id="pp" required
+								name="departure_time">
+
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Destination Time</label> <input
+								type="time" class="form-control" id="pp" required
+								name="destination_time">
+
+						</div>
+
+						<div class="mb-3">
+							<label for="no" class="form-label">Detail</label>
+							<textarea rows="5" class="form-control" required name="detail"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Ticket Price </label> <input
+								type="number" class="form-control" id="pp" required
+								name="price">
+
+						</div>
+
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Modal For Add Train-->
+	<div class="modal fade" id="train" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="package">Add Train</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/admin/addtrain}" method="post">
+						<div class="mb-3">
+							<label for="fl" class="form-label">Train Company Name</label> <input
+								type="text" class="form-control" id="fl" required
+								name="company">
+
+						</div>
+						<div class="mb-3">
+							<label for="fn" class="form-label">Train No</label> <input
+								type="text" class="form-control" id="fn" required
+								name="train_no">
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">
+								Departure City</label> <input type="text" class="form-control"
+								id="exampleInputEmail1" required name="departure_city">
+
+						</div>
+						<div class="mb-3">
+							<label for="dc" class="form-label">Destination City</label> <input
+								type="text" class="form-control" id="dc" required
+								name="destination_city">
+
+						</div>
+
+						<div class="mb-3">
+							<label for="pp" class="form-label">Departure Time</label> <input
+								type="time" class="form-control" id="pp" required
+								name="departure_time">
+
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Destination Time</label> <input
+								type="time" class="form-control" id="pp" required
+								name="destination_time">
+
+						</div>
+
+						<div class="mb-3">
+							<label for="no" class="form-label">Detail</label>
+							<textarea rows="5" class="form-control" required name="detail"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Ticket Price </label> <input
+								type="number" class="form-control" id="pp" required
+								name="price">
+
+						</div>
+
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save
+						changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Modal For Add Bus-->
+	<div class="modal fade" id="bus" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div
+			class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="package">Add Bus</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/admin/addBus}" method="post">
+					
+					
+					
+				
+						<div class="mb-3">
+							<label for="fl" class="form-label">Bus Company Name</label> <input
+								type="text" class="form-control" id="fl" required
+								name="company">
+
+						</div>
+						<div class="mb-3">
+							<label for="fn" class="form-label">Bus No</label> <input
+								type="text" class="form-control" id="fn" required
+								name="bus_no">
+
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputEmail1" class="form-label">
+								Departure City</label> <input type="text" class="form-control"
+								id="exampleInputEmail1" required name="departure_city">
+
+						</div>
+						<div class="mb-3">
+							<label for="dc" class="form-label">Destination City</label> <input
+								type="text" class="form-control" id="dc" required
+								name="destination_city">
+
+						</div>
+
+						<div class="mb-3">
+							<label for="pp" class="form-label">Departure Time</label> <input
+								type="time" class="form-control" id="pp" required
+								name="departure_time">
+
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Destination Time</label> <input
+								type="time" class="form-control" id="pp" required
+								name="destination_time">
+
+						</div>
+
+						<div class="mb-3">
+							<label for="no" class="form-label">Detail</label>
+							<textarea rows="5" class="form-control" required name="detail"></textarea>
+						</div>
+						<div class="mb-3">
+							<label for="pp" class="form-label">Ticket Price </label> <input
+								type="number" class="form-control" id="pp" required
+								name="price">
+
+						</div>
+
+						<div class="text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save
+						changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+
+</body>
+</html>
